@@ -8,7 +8,7 @@ def createConnection():
         host = "localhost",
         port = 3306,
         user = "SaharaAdmin",
-        password="ezravsprawn",
+        password="abcdefg123",
         db = "",
         cursorclass = pymysql.cursors.DictCursor
     )
