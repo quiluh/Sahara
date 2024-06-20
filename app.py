@@ -17,5 +17,13 @@ def createConnection():
 def Home():
     return render_template("home.html")
 
+@app.route("/admin")
+def Admin():
+    return render_template("admin.html")
+
+@app.route("/adminUpdate",methods=["POST"])
+def adminUpdate():
+    pass
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True)
+    app.run(debug=True)
