@@ -9,7 +9,7 @@ def createConnection():
         port = 3306,
         user = "SaharaAdmin",
         password="abcdefg123",
-        db = "",
+        db = "productdb",
         cursorclass = pymysql.cursors.DictCursor
     )
 
@@ -25,19 +25,21 @@ def Admin():
 def adminUpdate():
     id = request.form["productID"]
     name = request.form["productName"]
-    price = request.form["Price"]
+    price = request.form["productPrice"]
 
     connection = createConnection()
     cursor = connection.cursor()
 
     cursor.execute(
-        "INSERT INTO allproducts VALUES (%s,%s,%s)",
+        "INSERT INTO allproducts VALUES (%s,%s,%s);",
         (id,name,price)
     )
     connection.commit()
 
     cursor.close()
     connection.close()
+    
+    return True
 
 if __name__ == "__main__":
     app.run(debug=True)
