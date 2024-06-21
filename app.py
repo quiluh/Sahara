@@ -23,7 +23,21 @@ def Admin():
 
 @app.route("/adminUpdate",methods=["POST"])
 def adminUpdate():
-    pass
+    id = request.form["productID"]
+    name = request.form["productName"]
+    price = request.form["Price"]
+
+    connection = createConnection()
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "INSERT INTO allproducts VALUES (%s,%s,%s)",
+        (id,name,price)
+    )
+    connection.commit()
+
+    cursor.close()
+    connection.close()
 
 if __name__ == "__main__":
     app.run(debug=True)

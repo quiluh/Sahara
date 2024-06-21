@@ -7,8 +7,11 @@
 </head>
 <body>
     <form action="{{ urlfor('adminUpdate') }}" method="post">
+        <label for="id">id: </label>
         <input type="number" name="productID">
+        <label for="name">name: </label>
         <input type="text" name="productName">
+        <label for="price">price: </label>
         <input type="number" name="productPrice">
         <button type="submit">Submit</button>
     </form>
