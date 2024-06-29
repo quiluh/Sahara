@@ -1,17 +1,10 @@
 from flask import Flask, render_template, request
-import pymysql
+
+from sqlalchemy import text, create_engine
+
+engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb")
 
 app = Flask(__name__)
-
-def createConnection():
-    return pymysql.connect(
-        host = "localhost",
-        port = 3306,
-        user = "SaharaAdmin",
-        password="abcdefg123",
-        db = "productdb",
-        cursorclass = pymysql.cursors.DictCursor
-    )
 
 @app.route("/")
 def Home():
@@ -26,18 +19,11 @@ def adminUpdate():
     id = request.form["productID"]
     name = request.form["productName"]
     price = request.form["productPrice"]
+    image = request.form["productImage"].read()
 
-    connection = createConnection()
-    cursor = connection.cursor()
-
-    cursor.execute(
-        "INSERT INTO allproducts VALUES (%s,%s,%s);",
-        (id,name,price)
-    )
-    connection.commit()
-
-    cursor.close()
-    connection.close()
+    with engine.connect() as connection:
+        query = text("INSERT INTO allproducts (id, name, price, image) VALUES (:id, :name, :price, :image)")
+        connection.execute(query, {"id": id, "name": name, "price": price, "image": image})
     
     return True
 
