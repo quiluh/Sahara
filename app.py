@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 
 from sqlalchemy import text, create_engine
+from io import BytesIO
+from PIL import Image
+import io
 
 engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb")
 
@@ -26,6 +29,21 @@ def adminUpdate():
         connection.execute(query, {"id": id, "name": name, "price": price, "image": image})
     
     return True
+
+def getImageMimeType(imageBytes):
+    image = Image.open(BytesIO(imageBytes))
+    mimeType = Image.MIME[image.format]
+    return mimeType
+
+@app.route("/productImage/<int:productID>")
+def productImage(productID:int):
+    with engine.connect() as connection:
+        query = text("SELECT displayImage FROM allproducts WHERE productID = :id")
+        result = connection.execute(query, {"id": productID}).fetchone()
+        
+        if result and result[0]:
+            return send_file(BytesIO(result[0]), mimetype=getImageMimeType(result[0]))
+    return False
 
 if __name__ == "__main__":
     app.run(debug=True)
