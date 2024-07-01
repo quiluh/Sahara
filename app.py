@@ -22,11 +22,17 @@ def adminUpdate():
     id = request.form["productID"]
     name = request.form["productName"]
     price = request.form["productPrice"]
-    image = request.form["productImage"].read()
+
+    image = Image.open(request.form["productImage"])
+    image = image.resize((500,500),Image.LANCZOS)
+
+    imageByte = io.BytesIO()
+    image.save(imageByte, format=image.format)
+    imageByte = imageByte.getvalue()
 
     with engine.connect() as connection:
         query = text("INSERT INTO allproducts (id, name, price, image) VALUES (:id, :name, :price, :image)")
-        connection.execute(query, {"id": id, "name": name, "price": price, "image": image})
+        connection.execute(query, {"id": id, "name": name, "price": price, "image": imageByte})
     
     return True
 
