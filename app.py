@@ -36,7 +36,7 @@ def adminUpdate():
     
     return True
 
-def getImageMimeType(imageBytes):
+def getImageMimeType(imageBytes) -> str:
     image = Image.open(BytesIO(imageBytes))
     mimeType = Image.MIME[image.format]
     return mimeType
