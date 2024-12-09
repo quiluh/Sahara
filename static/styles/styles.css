@@ -1,0 +1,29 @@
+:root {
+    --baseBackgroundColor: #bccbde;
+    --lightBackgroundColor: #e5dfe0;
+    --lightPrimary: #D97335;
+    --mediumPrimary: #9D4F2E;
+    --darkPrimary: #573529;
+
+    --textPrimary: #1c110d;
+}
+
+body {
+    background-color: var(--baseBackgroundColor);
+}
+
+.primaryHeader {
+    background-color: var(--lightBackgroundColor);
+}
+.primaryTextColor {
+    color: var(--textPrimary);
+}
+#saharaHeader {
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: calc(1.5vh + 2.5vw);
+    margin-left: 2%;
+}
+#saharaHeader:hover {
+    filter: brightness(225%);
+}
