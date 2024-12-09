@@ -1,7 +1,7 @@
 :root {
     --baseBackgroundColor: #bccbde;
     --lightBackgroundColor: #e5dfe0;
-    --lightPrimary: #D97335;
+    --lightPrimary: #d38554;
     --mediumPrimary: #9D4F2E;
     --darkPrimary: #573529;
 
@@ -10,13 +10,11 @@
 
 body {
     background-color: var(--baseBackgroundColor);
+    color: var(--textPrimary);
 }
 
 .primaryHeader {
     background-color: var(--lightBackgroundColor);
-}
-.primaryTextColor {
-    color: var(--textPrimary);
 }
 #saharaHeader {
     cursor: pointer;
@@ -26,4 +24,17 @@ body {
 }
 #saharaHeader:hover {
     filter: brightness(225%);
+}
+.w-30 {
+    width: 30%;
+}
+.cardText {
+    font-size: calc(2vw + 0.9vh);
+    font-weight: bold;
+}
+.cardImage {
+    padding-top: 2%;
+}
+.cardDiv {
+    background-color: var(--lightPrimary);
 }
