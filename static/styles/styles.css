@@ -34,6 +34,8 @@ body {
 }
 .cardImage {
     padding-top: 2%;
+    object-fit: cover;
+    height: calc(6vw + 8vh);
 }
 .cardDiv {
     background-color: var(--lightPrimary);
