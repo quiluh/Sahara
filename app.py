@@ -14,16 +14,15 @@ app = Flask(__name__)
 @app.route("/")
 def Home():
     randomProducts = []
-    try:
-        with engine.connect() as connection:
-            query = text("SELECT * FROM allproducts")
-            result = connection.execute(query)
-            randomIn = [random.randint(0,len(list(result))+1)]
-            for i in randomIn:
-                randomProducts.append(dict(list(result)[i]))
-                randomIn.remove(i)
-    except:
-        pass
+    with engine.connect() as connection:
+        query = text("SELECT * FROM allproducts")
+        result = connection.execute(query)
+        for i in range(16):
+            randomIn = random.randint(0,len(list(result))+1)
+            if dict(list(result)[randomIn]) in randomProducts:
+                i -= 1
+            else:
+                randomProducts.append(dict(list(result)[randomIn]))
     return render_template("home.html",randomProducts=randomProducts)
 
 @app.route("/admin")
