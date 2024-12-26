@@ -18,9 +18,9 @@ def Home():
     randomProducts = [[None]*columns]*rows
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts")
-        result = connection.execute(query)
-        while len(randomIn) != (rows*columns):
-            index = random.randint(0,len(list(result))+1)
+        result = list(connection.execute(query))
+        while len(randomIn) != rows*columns:
+            index = random.randint(0,len(result)+1)
             if index not in randomIn:
                 randomIn.append(index)
     randomIn = iter(randomIn)
