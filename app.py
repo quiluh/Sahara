@@ -7,7 +7,7 @@ import io
 
 import random
 
-engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb")
+engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb",future=True)
 
 app = Flask(__name__)
 
@@ -46,7 +46,8 @@ def adminUpdate():
             "INSERT INTO allproducts (productName, productPrice, productImage) VALUES (:name, :price, :image)"
         )
         connection.execute(query, {"name": name, "price": price, "image": imageByte})
-        
+        connection.commit()
+
     return render_template("admin.html")
 
 def getImageMimeType(imageBytes) -> str:
@@ -65,4 +66,4 @@ def productImage(productID:int):
     return False
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
