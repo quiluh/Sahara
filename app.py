@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route("/")
 def Home():
     randomIn = []
-    rows,columns = (4,4)
+    rows,columns = (4,4) # COLUMNS HAVE TO BE DIVISIBLE BY 12
     randomProducts = [[None]*columns]*rows
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts")
@@ -27,7 +27,7 @@ def Home():
     for i in randomProducts:
         for o in range(len(i)):
             i[o] = next(randomIn)
-    return render_template("home.html",randomProducts=randomProducts)
+    return render_template("home.html",randomProducts=randomProducts,columnKey={1:"col-sm-12",2:"col-sm-6",3:"col-sm-4",4:"col-sm-3",6:"col-sm-2",12:"col-sm-1"})
 
 @app.route("/admin")
 def Admin():
