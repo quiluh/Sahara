@@ -11,7 +11,7 @@
     {% for i in randomProducts %}
         <div class="row p-4 justify-content-evenly">
             {% for item in i %}
-                <div class="{{columnKey[item|length]}} my-2">
+                <div class="{{columnKey[i|length]}} my-2">
                     <div class="card cardDiv m-auto">
                         <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto cardImage" alt="...">
                         <div class="card-body text-center">
