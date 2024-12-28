@@ -20,6 +20,7 @@ body {
     cursor: pointer;
     font-weight: bolder;
     font-size: calc(1.5vh + 2.5vw);
+    color: var(--textPrimary);
     margin-left: 2%;
 }
 #saharaHeader:hover {
