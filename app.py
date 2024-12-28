@@ -15,7 +15,7 @@ app = Flask(__name__)
 def Home():
     randomIn = []
     rows,columns = (4,4) # COLUMNS HAVE TO BE DIVISIBLE BY 12
-    randomProducts = [[None]*columns]*rows
+    randomProducts = [[None for i in range(columns)] for o in range(rows)]
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts")
         result = list(connection.execute(query))
