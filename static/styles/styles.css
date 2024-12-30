@@ -32,11 +32,16 @@ body {
 .cardText {
     font-size: calc(2vw + 0.9vh);
     font-weight: bold;
+    color: var(--textPrimary);
 }
 .optimisedCardImage {
     padding-top: 2%;
     object-fit: cover;
     height: calc(6vw + 8vh);
+}
+.cardImage {
+    padding-top: 2%;
+    object-fit: cover;
 }
 .cardDiv {
     background-color: var(--lightPrimary);

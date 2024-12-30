@@ -17,12 +17,14 @@
         <div class="row p-4 justify-content-evenly">
             {% for item in i %}
                 <div class="{{columnKey[i|length]}} my-2">
-                    <div class="card cardDiv m-auto">
-                        <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto optimisedCardImage" alt="...">
-                        <div class="card-body text-center">
-                            <p class="card-text cardText">{{item["productName"]}} $ {{item["productPrice"]}}</p>
+                    <a href="{{ url_for('Product',productID=item['productID']) }}" class="text-decoration-none">
+                        <div class="card cardDiv m-auto">
+                            <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto optimisedCardImage" alt="...">
+                            <div class="card-body text-center">
+                                <p class="card-text cardText">{{item["productName"]}} $ {{item["productPrice"]}}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
