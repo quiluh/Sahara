@@ -68,7 +68,7 @@ def productImage(productID:int):
             return send_file(BytesIO(result[0]), mimetype=getImageMimeType(result[0]))
     return False
 
-@app.route("product/<int:productID>")
+@app.route("/product/<int:productID>")
 def Product(productID:int):
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts WHERE productID = :id")
