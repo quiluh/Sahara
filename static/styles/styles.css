@@ -33,7 +33,7 @@ body {
     font-size: calc(2vw + 0.9vh);
     font-weight: bold;
 }
-.cardImage {
+.optimisedCardImage {
     padding-top: 2%;
     object-fit: cover;
     height: calc(6vw + 8vh);

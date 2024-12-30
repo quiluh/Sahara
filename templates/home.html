@@ -18,7 +18,7 @@
             {% for item in i %}
                 <div class="{{columnKey[i|length]}} my-2">
                     <div class="card cardDiv m-auto">
-                        <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto cardImage" alt="...">
+                        <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto optimisedCardImage" alt="...">
                         <div class="card-body text-center">
                             <p class="card-text cardText">{{item["productName"]}} $ {{item["productPrice"]}}</p>
                         </div>
