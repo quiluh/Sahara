@@ -11,6 +11,7 @@
 body {
     background-color: var(--baseBackgroundColor);
     color: var(--textPrimary);
+    overflow-x: hidden;
 }
 
 .primaryHeader {
