@@ -22,13 +22,27 @@ body {
     font-weight: bolder;
     font-size: calc(1.5vh + 2.5vw);
     color: var(--textPrimary);
-    margin-left: 2%;
 }
 #saharaHeader:hover {
     filter: brightness(225%);
 }
+#saharaHeaderDiv {
+    margin-left: 5%;
+    float: left;
+}
+#searchBar {
+    margin-right: 5%;
+    width: 30%;
+    float: right;
+}
 .w-30 {
     width: 30%;
+}
+.w-100 {
+    width: 100%;
+}
+.fit-content {
+    width: fit-content;
 }
 .cardText {
     font-size: calc(2vw + 0.9vh);
