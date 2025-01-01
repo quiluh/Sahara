@@ -41,6 +41,9 @@ body {
 .w-100 {
     width: 100%;
 }
+.w-110 {
+    width: 110%;
+}
 .fit-content {
     width: fit-content;
 }
@@ -60,4 +63,8 @@ body {
 }
 .cardDiv {
     background-color: var(--lightPrimary);
+}
+#searchResultDiv {
+    left: 50%;
+    transform: translate(-50%);
 }
