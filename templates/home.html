@@ -9,15 +9,15 @@
         <div class="row p-4 justify-content-evenly">
             {% for item in i %}
                 <div class="{{columnKey[i|length]}} my-2">
-                    <a href="{{ url_for('Product',productID=item['productID']) }}" class="text-decoration-none">
-                        <div class="card cardDiv m-auto">
+                    <div class="card cardDiv m-auto">
+                        <a href="{{ url_for('Product',productID=item['productID']) }}" class="text-decoration-none">
                             <img src="/productImage/{{item['productID']}}" class="card-img-top w-50 m-auto optimisedCardImage" alt="...">
                             <div class="card-body text-center">
                                 <p class="card-text cardText">{{item["productName"]}} $ {{item["productPrice"]}}</p>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                </div>            
             {% endfor %}
         </div>
     {% endfor %}
