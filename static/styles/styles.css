@@ -68,3 +68,11 @@ body {
     left: 50%;
     transform: translate(-50%);
 }
+.searchCardText {
+    font-size: calc(0.5vw + 0.9vh);
+    font-weight: bold;
+    color: var(--textPrimary);
+}
+.bg-light-cust {
+    background-color: var(--lightBackgroundColor);
+}
