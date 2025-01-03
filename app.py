@@ -11,6 +11,25 @@ engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/pr
 
 app = Flask(__name__)
 
+@app.route("/processData",methods=["POST"])
+def processData():
+    data = request.get_json()
+
+def getImageMimeType(imageBytes) -> str:
+    image = Image.open(BytesIO(imageBytes))
+    mimeType = Image.MIME[image.format]
+    return mimeType
+
+@app.route("/productImage/<int:productID>")
+def productImage(productID:int):
+    with engine.connect() as connection:
+        query = text("SELECT productImage FROM allproducts WHERE productID = :id")
+        result = connection.execute(query, {"id": productID}).fetchone()
+        
+        if result and result[0]:
+            return send_file(BytesIO(result[0]), mimetype=getImageMimeType(result[0]))
+    return False
+
 @app.route("/")
 def Home():
     randomIn = []
@@ -52,21 +71,6 @@ def adminUpdate():
         connection.commit()
 
     return render_template("admin.html")
-
-def getImageMimeType(imageBytes) -> str:
-    image = Image.open(BytesIO(imageBytes))
-    mimeType = Image.MIME[image.format]
-    return mimeType
-
-@app.route("/productImage/<int:productID>")
-def productImage(productID:int):
-    with engine.connect() as connection:
-        query = text("SELECT productImage FROM allproducts WHERE productID = :id")
-        result = connection.execute(query, {"id": productID}).fetchone()
-        
-        if result and result[0]:
-            return send_file(BytesIO(result[0]), mimetype=getImageMimeType(result[0]))
-    return False
 
 @app.route("/product/<int:productID>")
 def Product(productID:int):

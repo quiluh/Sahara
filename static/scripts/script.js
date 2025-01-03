@@ -1,4 +1,5 @@
-document.getElementById("searchForm").addEventListener("keydown",function(event) {
+const searchForm = document.getElementById("searchForm");
+searchForm.addEventListener("keydown",async function(event) {
     if (event.key == "enter") {
         
     }
