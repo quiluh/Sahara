@@ -11,10 +11,6 @@ engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/pr
 
 app = Flask(__name__)
 
-@app.route("/processData",methods=["POST"])
-def processData():
-    data = request.get_json()
-
 def getImageMimeType(imageBytes) -> str:
     image = Image.open(BytesIO(imageBytes))
     mimeType = Image.MIME[image.format]
@@ -78,6 +74,14 @@ def Product(productID:int):
         query = text("SELECT * FROM allproducts WHERE productID = :id")
         result = connection.execute(query,{"id":productID}).fetchone()
     return render_template("product.html",product=result)
+
+@app.route("/processSearch",methods=["POST"])
+def processSearch():
+    data = request.get_json()
+    with engine.connect() as connection:
+        query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
+        result = list(connection.execute(query,{"search":data["result"]}))
+    return jsonify(result=result)
 
 if __name__ == "__main__":
     app.run()
