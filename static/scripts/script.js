@@ -2,6 +2,9 @@ const searchForm = document.getElementById("searchForm");
 const searchResultDiv = document.getElementById("searchResultDiv");
 searchForm.addEventListener("keydown",function(event) {
     if (event.key == "enter") {
+        while (searchResultDiv.firstChild) {
+            searchResultDiv.removeChild(searchResultDiv.lastChild);
+        };
         $.ajax({
             url: "/processSearch",
             type: "POST",
@@ -37,6 +40,10 @@ searchForm.addEventListener("keydown",function(event) {
 
                     return card;
                 })
+
+                for (let i = 0; i < cardList.length; i++) {
+                    searchResultDiv.appendChild(cardList[i]);
+                };
 
             },
             error: function(error) {
