@@ -8,8 +8,8 @@
     <div class="row justify-content-center">
         <div class="col-sm-8 my-2">
             <div class="card cardDiv m-auto">
-                <a href="{{ url_for('Product', productID=product['productID']) }}" class="text-decoration-none">
-                    <img src="/productImage/{{product['productID']}}" class="card-img-top w-50 m-auto cardImage" alt="...">
+                <a href="{{ url_for('Product', productID=product['productID']) }}" class="text-decoration-none text-center">
+                    <img src="/productImage/{{product['productID']}}" class="card-img-top w-50 mx-auto cardImage" alt="...">
                     <div class="card-body text-center">
                         <p class="card-text cardText">{{product["productName"]}} $ {{product["productPrice"]}}</p>
                     </div>
