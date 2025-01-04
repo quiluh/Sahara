@@ -27,6 +27,11 @@ searchForm.addEventListener("keydown",function(event) {
                 let cardText = document.createElement("p");
                 cardText.innerHTML = "";
                 cardText.className = "card-text searchCardText";
+
+                cardBody.appendChild(cardText);
+                clickablility.appendChild(image);
+                clickablility.appendChild(cardBody);
+                card.appendChild(clickablility);
             },
             error: function(error) {
                 console.log(error);
