@@ -8,30 +8,36 @@ searchForm.addEventListener("keydown",function(event) {
             contentType: "application/json",
             data: JSON.stringify({"result":searchForm.value}),
             success: function(response) {
-                let searchList = response.result;
 
-                let card = document.createElement("div");
-                card.className = "card cardDiv m-auto w-50 mt-1";
+                var searchList = response.result;
 
-                let clickablility = document.createElement("a");
-                clickablility.href = "";
-                clickablility.className = "text-decoration-none";
+                var cardList = searchList.map(item => {
+                    let card = document.createElement("div");
+                    card.className = "card cardDiv m-auto w-50 mt-1";
 
-                let image = document.createElement("img");
-                image.src = "";
-                image.className = "card-img-top w-50 m-auto pt-1";
+                    let clickablility = document.createElement("a");
+                    clickablility.href = `/product/${item["productID"]}`;
+                    clickablility.className = "text-decoration-none";
 
-                let cardBody = document.createElement("div");
-                cardBody.className = "card-body text-center";
+                    let image = document.createElement("img");
+                    image.src = `/productImage/${item["productID"]}`;
+                    image.className = "card-img-top w-50 m-auto pt-1";
 
-                let cardText = document.createElement("p");
-                cardText.innerHTML = "";
-                cardText.className = "card-text searchCardText";
+                    let cardBody = document.createElement("div");
+                    cardBody.className = "card-body text-center";
 
-                cardBody.appendChild(cardText);
-                clickablility.appendChild(image);
-                clickablility.appendChild(cardBody);
-                card.appendChild(clickablility);
+                    let cardText = document.createElement("p");
+                    cardText.innerHTML = `${item["productName"]} $ ${item["productPrice"]}`;
+                    cardText.className = "card-text searchCardText";
+
+                    cardBody.appendChild(cardText);
+                    clickablility.appendChild(image);
+                    clickablility.appendChild(cardBody);
+                    card.appendChild(clickablility);
+
+                    return card;
+                })
+
             },
             error: function(error) {
                 console.log(error);
