@@ -22,13 +22,10 @@ body {
     font-weight: bolder;
     font-size: calc(1.5vh + 2.5vw);
     color: var(--textPrimary);
+    margin-left: 5%;
 }
 #saharaHeader:hover {
     filter: brightness(225%);
-}
-#saharaHeaderDiv {
-    margin-left: 5%;
-    float: left;
 }
 #searchBar {
     margin-right: 5%;
