@@ -80,7 +80,13 @@ def processSearch():
     data = request.get_json()
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
-        result = list(connection.execute(query,{"search":data["result"]}))
+        result = list(connection.execute(query,{"search":f"%{data['result']}%"}))
+        result = [list(row) for row in result]
+        for row in result:
+            for i in range(len(row)):
+                if isinstance(row[i],bytes):
+                    row[i] = row[i].decode("utf-8")
+        print(result)
     return jsonify(result=result)
 
 if __name__ == "__main__":
