@@ -1,7 +1,9 @@
 const searchForm = document.getElementById("searchForm");
 const searchResultDiv = document.getElementById("searchResultDiv");
 searchForm.addEventListener("keydown",function(event) {
-    if (event.key == "enter") {
+    if (event.key == "Enter") {
+        event.preventDefault();
+
         while (searchResultDiv.firstChild) {
             searchResultDiv.removeChild(searchResultDiv.lastChild);
         };
@@ -11,7 +13,6 @@ searchForm.addEventListener("keydown",function(event) {
             contentType: "application/json",
             data: JSON.stringify({"result":searchForm.value}),
             success: function(response) {
-
                 var searchList = response.result;
 
                 var cardList = searchList.map(item => {
