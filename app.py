@@ -38,7 +38,7 @@ def adminUpdate():
 
     with engine.connect() as connection:
         query = text(
-            "INSERT INTO allproducts (productName, productPrice, productImage) VALUES (:name, :price, :imageName)"
+            "INSERT INTO allproducts (productName, productPrice, productImageName) VALUES (:name, :price, :imageName)"
         )
         connection.execute(query, {"name": name, "price": price, "imageName": imageName})
         connection.commit()
