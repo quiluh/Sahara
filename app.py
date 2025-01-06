@@ -19,11 +19,11 @@ def getImageMimeType(imageBytes) -> str:
 @app.route("/productImage/<int:productID>")
 def productImage(productID:int):
     with engine.connect() as connection:
-        query = text("SELECT productImage FROM allproducts WHERE productID = :id")
+        query = text("SELECT productImageName FROM allproducts WHERE productID = :id")
         result = connection.execute(query, {"id": productID}).fetchone()
         
-        if result and result[0]:
-            return send_file(BytesIO(result[0]), mimetype=getImageMimeType(result[0]))
+        if result:
+            return f"static/images/{result}"
     return False
 
 @app.route("/")
@@ -77,11 +77,6 @@ def processSearch():
         query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
         result = list(connection.execute(query,{"search":f"%{data['result']}%"}))
         result = [list(row) for row in result]
-        for row in result:
-            for i in range(len(row)):
-                if isinstance(row[i],bytes):
-                    row[i] = row[i].decode("utf-8")
-        print(result)
     return jsonify(result=result)
 
 if __name__ == "__main__":
