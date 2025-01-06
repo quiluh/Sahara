@@ -1,30 +1,12 @@
 from flask import Flask, render_template, request, send_file, jsonify
 
 from sqlalchemy import text, create_engine
-from io import BytesIO
-from PIL import Image
-import io
 
 import random
 
 engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb",future=True)
 
 app = Flask(__name__)
-
-def getImageMimeType(imageBytes) -> str:
-    image = Image.open(BytesIO(imageBytes))
-    mimeType = Image.MIME[image.format]
-    return mimeType
-
-@app.route("/productImage/<int:productID>")
-def productImage(productID:int):
-    with engine.connect() as connection:
-        query = text("SELECT productImageName FROM allproducts WHERE productID = :id")
-        result = connection.execute(query, {"id": productID}).fetchone()
-        
-        if result:
-            return f"static/images/{result}"
-    return False
 
 @app.route("/")
 def Home():
