@@ -24,7 +24,7 @@ searchForm.addEventListener("keydown",function(event) {
                     clickablility.className = "text-decoration-none";
 
                     let image = document.createElement("img");
-                    image.src = `{{ url_for('static',filename='images/${item["productImageName"]}') }}`;
+                    image.src = `{{ url_for('static',filename='images/' + '${item["productImageName"]}') }}`;
                     image.className = "card-img-top w-50 m-auto pt-1";
 
                     let cardBody = document.createElement("div");
