@@ -52,18 +52,13 @@ def Admin():
 def adminUpdate():
     name = request.form["productName"]
     price = request.form["productPrice"]
-
-    image = Image.open(request.files["productImage"])
-
-    imageByte = io.BytesIO()
-    image.save(imageByte, format=image.format)
-    imageByte = imageByte.getvalue()
+    imageName = request.form["productImageName"]
 
     with engine.connect() as connection:
         query = text(
-            "INSERT INTO allproducts (productName, productPrice, productImage) VALUES (:name, :price, :image)"
+            "INSERT INTO allproducts (productName, productPrice, productImage) VALUES (:name, :price, :imageName)"
         )
-        connection.execute(query, {"name": name, "price": price, "image": imageByte})
+        connection.execute(query, {"name": name, "price": price, "imageName": imageName})
         connection.commit()
 
     return render_template("admin.html")
