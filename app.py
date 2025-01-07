@@ -80,6 +80,7 @@ def processSearch():
         columnIter = iter(Table("allproducts").Columns)
         for i in range(len(result)):
             result[i] = {next(columnIter):info for info in result[i]}
+            columnIter = iter(Table("allproducts").Columns)
     return jsonify(result=result)
 
 if __name__ == "__main__":
