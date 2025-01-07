@@ -1,12 +1,27 @@
 from flask import Flask, render_template, request, send_file, jsonify
 
-from sqlalchemy import text, create_engine
+from sqlalchemy import text, create_engine, inspect
 
 import random
 
 engine = create_engine("mysql+pymysql://SaharaAdmin:abcdefg123@localhost:3306/productdb",future=True)
 
 app = Flask(__name__)
+
+class Table:
+
+    def __init__(self,tableName:str):
+        self._name = tableName
+
+        self._columns = [col["name"] for col in inspect(engine).get_columns(tableName)]
+    
+    @property
+    def Name(self) -> str:
+        return self._name
+    
+    @property
+    def Columns(self) -> list[str]:
+        return self._columns
 
 @app.route("/")
 def Home():
@@ -57,8 +72,8 @@ def processSearch():
     data = request.get_json()
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
-        result = list(connection.execute(query,{"search":f"%{data['result']}%"}))
-        result = [list(row) for row in result]
+        result = list(connection.execute(query,{"search":f"{data['result']}%"}))
+        result = [list(row) for row in result] # make rows dict, where column is key
     return jsonify(result=result)
 
 if __name__ == "__main__":
