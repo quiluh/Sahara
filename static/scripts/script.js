@@ -18,7 +18,7 @@ searchForm.addEventListener("keydown",function(event) {
 
                 var cardList = searchList.map(item => {
                     let card = document.createElement("div");
-                    card.className = "card cardDiv m-auto w-50 mt-1";
+                    card.className = "card cardDiv m-auto w-50 mt-1 mb-1";
 
                     let clickablility = document.createElement("a");
                     clickablility.href = `/product/${item["productID"]}`;
