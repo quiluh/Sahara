@@ -7,13 +7,14 @@ searchForm.addEventListener("keydown",function(event) {
         while (searchResultDiv.firstChild) {
             searchResultDiv.removeChild(searchResultDiv.lastChild);
         };
+
         $.ajax({
             url: "/processSearch",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({"result":searchForm.value}),
             success: function(response) {
-                var searchList = response.result;
+                var searchList = response.result.slice(0,2);
 
                 var cardList = searchList.map(item => {
                     let card = document.createElement("div");
@@ -52,4 +53,10 @@ searchForm.addEventListener("keydown",function(event) {
             }
         });
     }
+})
+
+searchForm.addEventListener("blur", function() {
+    while (searchResultDiv.firstChild) {
+        searchResultDiv.removeChild(searchResultDiv.lastChild);
+    };
 })
