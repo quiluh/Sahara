@@ -1,5 +1,8 @@
 const searchForm = document.getElementById("searchForm");
 const searchResultDiv = document.getElementById("searchResultDiv");
+
+var searchResultsShowing = false;
+
 searchForm.addEventListener("keydown",function(event) {
     if (event.key == "Enter") {
         event.preventDefault();
@@ -7,6 +10,8 @@ searchForm.addEventListener("keydown",function(event) {
         while (searchResultDiv.firstChild) {
             searchResultDiv.removeChild(searchResultDiv.lastChild);
         };
+
+        searchResultsShowing = false;
 
         $.ajax({
             url: "/processSearch",
@@ -47,6 +52,8 @@ searchForm.addEventListener("keydown",function(event) {
                     searchResultDiv.appendChild(cardList[i]);
                 };
 
+                searchResultsShowing = true;
+
             },
             error: function(error) {
                 console.log(error);
@@ -55,8 +62,12 @@ searchForm.addEventListener("keydown",function(event) {
     }
 })
 
-searchForm.addEventListener("blur", function() {
-    while (searchResultDiv.firstChild) {
-        searchResultDiv.removeChild(searchResultDiv.lastChild);
-    };
+document.body.addEventListener("click", function() {
+    if (searchResultsShowing) {
+        while (searchResultDiv.firstChild) {
+            searchResultDiv.removeChild(searchResultDiv.lastChild);
+        };
+
+        searchResultsShowing = false;
+    }
 })
