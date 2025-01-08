@@ -73,15 +73,15 @@ def Product(productID:int):
 @app.route("/processSearch",methods=["POST"])
 def processSearch():
     data = request.get_json()
-
-    with engine.connect() as connection:
-        query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
-        result = list(connection.execute(query,{"search":f"{data['result']}%"}))
-        columnIter = iter(Table("allproducts").Columns)
-        for i in range(len(result)):
-            result[i] = {next(columnIter):info for info in result[i]}
+    if data["result"] != "":
+        with engine.connect() as connection:
+            query = text("SELECT * FROM allproducts WHERE productName LIKE :search")
+            result = list(connection.execute(query,{"search":f"{data['result']}%"}))
             columnIter = iter(Table("allproducts").Columns)
-    return jsonify(result=result)
+            for i in range(len(result)):
+                result[i] = {next(columnIter):info for info in result[i]}
+                columnIter = iter(Table("allproducts").Columns)
+        return jsonify(result=result)
 
 if __name__ == "__main__":
     app.run()
