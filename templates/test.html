@@ -9,10 +9,15 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg primaryHeader sticky-top">
-        <div class="w-50 d-flex flex-row">
-            <div class="fit-content" id="saharaHeaderDiv">
-                <a class="navbar-brand" id="saharaHeader" href="">Sahara</a>
-            </div>
+        <div class="w-40 d-flex flex-row">
+            <a class="navbar-brand" id="saharaHeader" href="{{ url_for('Home') }}">Sahara</a>
+        </div>
+        <div class="w-60 d-flex flex-row-reverse bg-dark">
+            <form class="form-inline my-2 my-lg-0 position-relative" id="searchBar" autocomplete="off">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchForm">
+                <div class="bg-light-cust rounded position-absolute w-110 text-center" id="searchResultDiv"></div>
+            </form>
+            <button href="" class="mx-auto my-auto rounded btn btn-sahara" id="cartLink">Cart</button>
         </div>
     </nav>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

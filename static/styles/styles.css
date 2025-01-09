@@ -85,3 +85,10 @@ body {
 .bg-light-cust {
     background-color: var(--lightBackgroundColor);
 }
+.btn-sahara {
+    background-color: var(--lightPrimary);
+    color: var(--textPrimary);
+}
+.btn-sahara:hover {
+    filter: brightness(105%);
+}
