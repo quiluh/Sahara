@@ -71,3 +71,18 @@ document.body.addEventListener("click", function() {
         searchResultsShowing = false;
     }
 })
+
+function addToCart(id) {
+    $.ajax({
+        url: "/addToCart",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({"productID":id}),
+        success: function(response) {
+           pass
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
