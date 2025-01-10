@@ -92,3 +92,10 @@ body {
 .btn-sahara:hover {
     filter: brightness(105%);
 }
+.btn-productAddToCart {
+    background-color: var(--lightBackgroundColor);
+    color: var(--textPrimary);
+}
+.btn-productAddToCart:hover {
+    filter: brightness(105%);
+}
