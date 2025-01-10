@@ -28,12 +28,15 @@ class UserData:
     _cart = []
     _totalIncurrence = 0
 
-    @staticmethod
-    def addToCart(productID:int):
-        pass
+    @classmethod
+    def addToCart(cls,productID:int):
+        with engine.connect() as connection:
+            query = text("SELECT * FROM allproducts where productID = :id")
+            result = connection.execute(query,{"id":productID}).fetchone()
+        
 
-    @staticmethod
-    def inCart(productID:int) -> bool:
+    @classmethod
+    def inCart(cls,productID:int,adding:bool) -> bool:
         pass
 
 @app.route("/")
@@ -99,8 +102,6 @@ def processSearch():
 @app.route("/addToCart",methods=["POST"])
 def handleAddToCart():
     data = request.get_json()
-    if not UserData.inCart(data["productID"]):
-        pass
 
 if __name__ == "__main__":
     app.run()
