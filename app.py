@@ -23,6 +23,15 @@ class Table:
     def Columns(self) -> list[str]:
         return self._columns
 
+class UserData:
+
+    _cart = []
+    _totalIncurrence = 0
+
+    @staticmethod
+    def addToCart(productID:int):
+        pass
+
 @app.route("/")
 def Home():
     randomIn = []
