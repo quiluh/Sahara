@@ -32,6 +32,10 @@ class UserData:
     def addToCart(productID:int):
         pass
 
+    @staticmethod
+    def inCart(productID:int) -> bool:
+        pass
+
 @app.route("/")
 def Home():
     randomIn = []
@@ -91,6 +95,12 @@ def processSearch():
                 result[i] = {next(columnIter):info for info in result[i]}
                 columnIter = iter(Table("allproducts").Columns)
         return jsonify(result=result)
+    
+@app.route("/addToCart",methods=["POST"])
+def handleAddToCart():
+    data = request.get_json()
+    if not UserData.inCart(data["productID"]):
+        pass
 
 if __name__ == "__main__":
     app.run()
