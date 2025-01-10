@@ -30,14 +30,10 @@ class UserData:
 
     @classmethod
     def addToCart(cls,productID:int):
+
         with engine.connect() as connection:
             query = text("SELECT * FROM allproducts where productID = :id")
             result = connection.execute(query,{"id":productID}).fetchone()
-        
-
-    @classmethod
-    def inCart(cls,productID:int,adding:bool) -> bool:
-        pass
 
 @app.route("/")
 def Home():
