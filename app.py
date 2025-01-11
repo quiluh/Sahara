@@ -104,6 +104,8 @@ def processSearch():
 @app.route("/addToCart",methods=["POST"])
 def handleAddToCart():
     data = request.get_json()
+    if UserData.addToCart(data["productID"]):
+        return jsonify(result=True)
 
 if __name__ == "__main__":
     app.run()
