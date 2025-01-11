@@ -29,9 +29,9 @@ class UserData:
     _totalIncurrence = 0
 
     @classmethod
-    def addToCart(cls,productID:int):
+    def addToCart(cls,productID:int,quantity=1):
         if productID in cls._cart:
-            pass
+            cls._cart[productID].update({"productQuantity":cls._cart[productID]["productQuantity"]+1})
         else:
             with engine.connect() as connection:
                 query = text("SELECT * FROM allproducts where productID = :id")
