@@ -29,14 +29,17 @@ class UserData:
     _totalIncurrence = 0
 
     @classmethod
-    def addToCart(cls,productID:int,quantity=1):
+    def addToCart(cls,productID:int,quantity=1) -> bool:
         if productID in cls._cart:
             cls._cart[productID].update({"productQuantity":cls._cart[productID]["productQuantity"]+1})
+            return True
         else:
             with engine.connect() as connection:
                 query = text("SELECT * FROM allproducts where productID = :id")
                 result = connection.execute(query,{"id":productID}).fetchone()
             cls._cart.update({productID:{"productData":result,"productQuantity":1}})
+            return True
+        return False
 
 @app.route("/")
 def Home():
