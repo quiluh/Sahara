@@ -25,15 +25,18 @@ class Table:
 
 class UserData:
 
-    _cart = []
+    _cart = {}   #{id:{productData:dict,productQuantity:int}}
     _totalIncurrence = 0
 
     @classmethod
     def addToCart(cls,productID:int):
-
-        with engine.connect() as connection:
-            query = text("SELECT * FROM allproducts where productID = :id")
-            result = connection.execute(query,{"id":productID}).fetchone()
+        if productID in cls._cart:
+            pass
+        else:
+            with engine.connect() as connection:
+                query = text("SELECT * FROM allproducts where productID = :id")
+                result = connection.execute(query,{"id":productID}).fetchone()
+            cls._cart.update({productID:{"productData":result,"productQuantity":1}})
 
 @app.route("/")
 def Home():
