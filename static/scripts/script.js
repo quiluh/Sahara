@@ -79,7 +79,9 @@ function addToCart(id) {
         contentType: "application/json",
         data: JSON.stringify({"productID":id}),
         success: function(response) {
-           pass
+           if (response) {
+                alert("Added to cart!");
+           }
         },
         error: function(error) {
             console.log(error);
