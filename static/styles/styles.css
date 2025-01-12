@@ -99,3 +99,6 @@ body {
 .btn-productAddToCart:hover {
     filter: brightness(105%);
 }
+#cartStatusText {
+    font-size: calc(1vw + 2vh);
+}
