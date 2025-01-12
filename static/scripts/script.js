@@ -72,20 +72,21 @@ document.body.addEventListener("click", function() {
     }
 })
 
-function addToCart(id) {
+function addToCart(event,id) {
     $.ajax({
         url: "/addToCart",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({"productID":id}),
         success: function(response) {
-           if (response) {
+            console.log(response)
+            if (response.result === id) {
                 document.getElementById("cartStatusDiv").classList.add("show");
                 
                 setTimeout(() => {
                     document.getElementById("cartStatusDiv").classList.remove("show")
                 },3000)
-           }
+            }
         },
         error: function(error) {
             console.log(error);

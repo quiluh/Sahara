@@ -12,7 +12,7 @@
                     <img src="{{ url_for('static', filename='images/' + product['productImageName']) }}" class="card-img-top w-50 mx-auto cardImage" alt="...">
                     <div class="card-body text-center">
                         <p class="card-text cardText">{{product["productName"]}} $ {{product["productPrice"]}}</p>
-                        <button class="btn btn-light" id="{{product['productID']}}" onclick="addToCart(id)">Add to cart</button>
+                        <button class="btn btn-light" id="{{product['productID']}}" onclick="addToCart(event,id)">Add to cart</button>
                     </div>
                 </a>
             </div>            
