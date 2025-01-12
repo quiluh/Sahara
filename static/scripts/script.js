@@ -73,6 +73,8 @@ document.body.addEventListener("click", function() {
 })
 
 function addToCart(event,id) {
+    event.preventDefault()
+    
     $.ajax({
         url: "/addToCart",
         type: "POST",
