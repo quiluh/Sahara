@@ -102,3 +102,6 @@ body {
 #cartStatusText {
     font-size: calc(1vw + 2vh);
 }
+.cartStatusDiv {
+    background-color: var(--lightPrimary);
+}
