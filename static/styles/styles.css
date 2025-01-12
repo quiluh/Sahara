@@ -116,3 +116,6 @@ body {
 #cartStatusDiv.show {
     opacity: 1;
 }
+.sticky {
+    position: sticky;
+}
