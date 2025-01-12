@@ -109,4 +109,10 @@ body {
 }
 .cartStatusDiv {
     background-color: var(--lightPrimary);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+.cartStatusDiv.show {
+    opacity: 1;
 }
