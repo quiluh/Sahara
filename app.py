@@ -105,7 +105,7 @@ def processSearch():
 def handleAddToCart():
     data = request.get_json()
     if UserData.addToCart(data["productID"]):
-        return jsonify(result=True)
+        return jsonify(result=data["productID"])
 
 if __name__ == "__main__":
     app.run()
