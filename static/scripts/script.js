@@ -1,14 +1,11 @@
-const searchForm = document.getElementById("searchForm");
-const searchResultDiv = document.getElementById("searchResultDiv");
-
 var searchResultsShowing = false;
 
-searchForm.addEventListener("keydown",function(event) {
+$("searchForm").addEventListener("keydown",function(event) {
     if (event.key == "Enter") {
         event.preventDefault();
 
-        while (searchResultDiv.firstChild) {
-            searchResultDiv.removeChild(searchResultDiv.lastChild);
+        while ($("searchResultDiv").firstChild) {
+            $("searchResultDiv").removeChild($("searchResultDiv").lastChild);
         };
 
         searchResultsShowing = false;
@@ -17,7 +14,7 @@ searchForm.addEventListener("keydown",function(event) {
             url: "/processSearch",
             type: "POST",
             contentType: "application/json",
-            data: JSON.stringify({"result":searchForm.value}),
+            data: JSON.stringify({"result":$("searchForm").value}),
             success: function(response) {
                 var searchList = response.result.slice(0,2);
 
@@ -49,7 +46,7 @@ searchForm.addEventListener("keydown",function(event) {
                 })
 
                 for (let i = 0; i < cardList.length; i++) {
-                    searchResultDiv.appendChild(cardList[i]);
+                    $("searchResultDiv").appendChild(cardList[i]);
                 };
 
                 searchResultsShowing = true;
@@ -64,8 +61,8 @@ searchForm.addEventListener("keydown",function(event) {
 
 document.body.addEventListener("click", function() {
     if (searchResultsShowing) {
-        while (searchResultDiv.firstChild) {
-            searchResultDiv.removeChild(searchResultDiv.lastChild);
+        while ($("searchResultDiv").firstChild) {
+            $("searchResultDiv").removeChild($("searchResultDiv").lastChild);
         };
 
         searchResultsShowing = false;
