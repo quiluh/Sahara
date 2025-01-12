@@ -80,7 +80,11 @@ function addToCart(id) {
         data: JSON.stringify({"productID":id}),
         success: function(response) {
            if (response) {
-                alert("Added to cart!");
+                document.getElementById("cartStatusDiv").classList.add("show");
+                
+                setTimeout(() => {
+                    document.getElementById("cartStatusDiv").classList.remove("show")
+                },3000)
            }
         },
         error: function(error) {
