@@ -21,7 +21,7 @@
     </nav>
     {% block content %}
     {% endblock %}
-    <div class="position-absolute bottom-0 start-50 text-center translate-middle p-2 px-3 rounded" id="cartStatusDiv">
+    <div class="position-fixed bottom-0 start-50 text-center translate-middle p-2 px-3 rounded" id="cartStatusDiv">
         <p id="cartStatusText">Added To Cart</p>
     </div>
     <script src="{{ url_for('static',filename='scripts/script.js') }}"></script>
