@@ -98,7 +98,10 @@ def Product(productID:int):
 
 @app.route("/sahara/cart")
 def Cart():
-    pass
+    cart = UserData.getCart()
+    productList = [cart[i] for i in cart]
+    
+    return render_template("cart.html",productList=productList)
 
 @app.route("/processSearch",methods=["POST"])
 def processSearch():
