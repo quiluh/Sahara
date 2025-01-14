@@ -23,7 +23,7 @@ class Table:
     def Columns(self) -> list[str]:
         return self._columns
 
-class UserData:
+class UserData: # will this be stored locally or no
 
     _cart = {}   #{id:{productData:dict,productQuantity:int}}
     _totalIncurrence = 0
@@ -91,6 +91,10 @@ def Product(productID:int):
         result = connection.execute(query,{"id":productID}).fetchone()
 
     return render_template("product.html",product=result)
+
+@app.route("/sahara/cart")
+def Cart():
+    pass
 
 @app.route("/processSearch",methods=["POST"])
 def processSearch():
