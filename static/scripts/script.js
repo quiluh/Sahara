@@ -26,7 +26,7 @@ searchForm.addEventListener("keydown",function(event) {
                     card.className = "card cardDiv m-auto w-50 mt-1 mb-1";
 
                     let clickablility = document.createElement("a");
-                    clickablility.href = `/product/${item["productID"]}`;
+                    clickablility.href = `/sahara/product/${item["productID"]}`;
                     clickablility.className = "text-decoration-none";
 
                     let image = document.createElement("img");
@@ -74,7 +74,7 @@ document.body.addEventListener("click", function() {
 
 function addToCart(event,id) {
     event.preventDefault()
-    
+
     $.ajax({
         url: "/addToCart",
         type: "POST",

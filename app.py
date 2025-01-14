@@ -84,7 +84,7 @@ def adminUpdate():
 
     return render_template("admin.html")
 
-@app.route("/product/<int:productID>")
+@app.route("/sahara/product/<int:productID>")
 def Product(productID:int):
     with engine.connect() as connection:
         query = text("SELECT * FROM allproducts WHERE productID = :id")
