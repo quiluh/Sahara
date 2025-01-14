@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 
 from sqlalchemy import text, create_engine, inspect
 
@@ -41,7 +41,7 @@ class UserData:
             return True
         return False
 
-@app.route("/")
+@app.route("/sahara")
 def Home():
     randomIn = []
     rows,columns = (4,4) # COLUMNS HAVE TO BE FACTOR OF 12
@@ -60,6 +60,10 @@ def Home():
             i[o] = result[next(randomIn)]
 
     return render_template("home.html",randomProducts=randomProducts,columnKey={1:"col-sm-12",2:"col-sm-6",3:"col-sm-4",4:"col-sm-3",6:"col-sm-2",12:"col-sm-1"})
+
+@app.route("/")
+def PortHome():
+    return redirect("/sahara")
 
 @app.route("/admin")
 def Admin():
