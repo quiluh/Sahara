@@ -28,8 +28,8 @@ class UserData: # will this be stored locally or no
     _cart = {}   #{id:{productData:dict,productQuantity:int}}
     _totalIncurrence = 0
 
-    @property
-    def Cart(cls) -> dict:
+    @classmethod
+    def getCart(cls) -> dict:
         return cls._cart
 
     @classmethod
