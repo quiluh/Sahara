@@ -65,11 +65,11 @@ def Home():
 def PortHome():
     return redirect("/sahara")
 
-@app.route("/admin")
+@app.route("/sahara/admin")
 def Admin():
     return render_template("admin.html")
 
-@app.route("/adminUpdate", methods=["POST"])
+@app.route("/sahara/adminUpdate", methods=["POST"])
 def adminUpdate():
     name = request.form["productName"]
     price = request.form["productPrice"]
