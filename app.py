@@ -31,7 +31,7 @@ class UserData: # will this be stored locally or no
     @classmethod
     def addToCart(cls,productID:int,quantity=1) -> bool:
         if productID in cls._cart:
-            cls._cart[productID].update({"productQuantity":cls._cart[productID]["productQuantity"]+1})
+            cls._cart[productID].update({"productQuantity":cls._cart[productID]["productQuantity"]+quantity})
             return True
         else:
             with engine.connect() as connection:
