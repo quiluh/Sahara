@@ -75,8 +75,11 @@ body {
     padding-top: 2%;
     object-fit: cover;
 }
-.cardDiv {
+.bg-light-primary {
     background-color: var(--lightPrimary);
+}
+.bg-light-color {
+    background-color: var(--lightBackgroundColor);
 }
 #searchResultDiv {
     left: 50%;
@@ -86,9 +89,6 @@ body {
     font-size: calc(0.5vw + 0.9vh);
     font-weight: bold;
     color: var(--textPrimary);
-}
-.bg-light-cust {
-    background-color: var(--lightBackgroundColor);
 }
 .btn-sahara {
     background-color: var(--lightPrimary);

@@ -9,7 +9,7 @@
         <div class="row p-4 justify-content-evenly">
             {% for item in i %}
                 <div class="{{columnKey[i|length]}} my-2">
-                    <div class="card cardDiv m-auto">
+                    <div class="card bg-light-primary m-auto">
                         <a href="{{ url_for('Product',productID=item['productID']) }}" class="text-decoration-none text-center">
                             <img src="{{ url_for('static', filename='images/' + item['productImageName']) }}" class="card-img-top w-50 m-auto optimisedCardImage" alt="...">
                             <div class="card-body text-center">

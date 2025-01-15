@@ -7,7 +7,7 @@
 {% block content %}
     <div class="row justify-content-center mx-1">
         <div class="col-sm-8 my-2">
-            <div class="card cardDiv m-auto">
+            <div class="card bg-light-primary m-auto">
                 <a href="{{ url_for('Product', productID=product['productID']) }}" class="text-decoration-none text-center">
                     <img src="{{ url_for('static', filename='images/' + product['productImageName']) }}" class="card-img-top w-50 mx-auto cardImage" alt="...">
                     <div class="card-body text-center">
