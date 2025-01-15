@@ -78,6 +78,9 @@ body {
 .bg-light-primary {
     background-color: var(--lightPrimary);
 }
+.bg-medium-primary {
+    background-color: var(--mediumPrimary);
+}
 .bg-light-color {
     background-color: var(--lightBackgroundColor);
 }
