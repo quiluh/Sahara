@@ -122,3 +122,8 @@ body {
 .sticky {
     position: sticky;
 }
+.cartImage {
+    object-fit: cover;
+    height: calc(4vh + 4vw);
+    padding: 2%;
+}
