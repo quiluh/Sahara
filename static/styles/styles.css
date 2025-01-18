@@ -127,3 +127,6 @@ body {
     height: calc(4vh + 4vw);
     padding: 2%;
 }
+.cartProductText {
+    font-size: calc(1vw+2vh);
+}
