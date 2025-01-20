@@ -130,3 +130,9 @@ body {
 .cartProductText {
     font-size: calc(1vw+2vh);
 }
+#cartHeader {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--textPrimary);
+    font-size: calc(1vw + 2vh);
+}
