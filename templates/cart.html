@@ -8,7 +8,16 @@
     <div class="row justify-content-center mx-1 w-100">
         <div class="col-sm-8 my-2">
             <div class="card bg-medium-primary m-auto text-center p-3 rounded overflow-hidden">
-                
+                {% for i in productList %}
+                    <div class="row w-100 bg-light-primary mx-auto rounded m-2">
+                        <div class="col-sm-6">
+                            <img src="{{ url_for('static', filename='images/' + i['productData']['productImageName']) }}" alt="" class="cartImage w-30">
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center text-center">
+                            <p class="cartProductText mb-0">{{i["productData"]["productName"]}} ({{i["productQuantity"]}})  $ {{i["productData"]["productPrice"]}}</p>
+                        </div>
+                    </div>    
+                {% endblock %}
             </div>            
         </div>
     </div>
