@@ -17,7 +17,7 @@
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchForm">
                 <div class="bg-light-color rounded position-absolute w-110 text-center" id="searchResultDiv"></div>
             </form>
-            <button href="" class="mx-auto my-auto rounded btn btn-sahara" id="cartLink">Cart</button>
+            <button href="{{ url_for('Cart') }}" class="mx-auto my-auto rounded btn btn-sahara" id="cartLink">Cart</button>
         </div>
     </nav>
     {% block content %}
