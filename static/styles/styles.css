@@ -129,6 +129,7 @@ body {
 }
 .cartProductText {
     font-size: calc(1vw+2vh);
+    color: var(--textPrimary);
 }
 #cartHeader {
     cursor: pointer;
