@@ -15,16 +15,15 @@
                             <img src="{{ url_for('static', filename='images/' + i['productData']['productImageName']) }}" alt="" class="cartImage w-30">
                         </div>
                         <div class="col-sm-6 d-flex align-items-center text-center">
-                            <div class="row">
+                            <div class="row w-100">
                                 <div class="col-sm-6">
-                                    
+                                    <p class="cartProductText mb-0">{{i["productData"]["productName"]}} ({{i["productQuantity"]}})  $ {{i["productData"]["productPrice"] * i["productQuantity"]}}</p>
+                                </div>
                                 </div>
                                 <div class="col-sm-6">
                                     
                                 </div>
-                            </div>
-                            <p class="cartProductText mb-0">{{i["productData"]["productName"]}} ({{i["productQuantity"]}})  $ {{i["productData"]["productPrice"] * i["productQuantity"]}}</p>
-                        </div>
+                            </div> 
                     </div>
                 </a>
                 {% endfor %}
