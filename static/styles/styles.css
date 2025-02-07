@@ -137,3 +137,7 @@ body {
     color: var(--textPrimary);
     font-size: calc(1vw + 2vh);
 }
+.cartEditButton {
+    background-color: var(--mediumPrimary);
+    font-weight: bold;
+}
